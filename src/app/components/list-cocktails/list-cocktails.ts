@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IFilter } from '../../models/filter.model';
+import { CocktailService } from '../../services/cocktail-service';
 
 @Component({
   selector: 'app-list-cocktails',
@@ -9,10 +10,27 @@ import { IFilter } from '../../models/filter.model';
   styleUrl: './list-cocktails.scss',
 })
 export class ListCocktails {
+  private cocktailService = inject(CocktailService);
+
   public filter: IFilter = {
     searchBy: 'name',
     value: '',
   };
 
-  filterData() {}
+  filterData() {
+    this.cocktailService.getCocktails(this.filter).subscribe({
+
+      next: (data: any)=> {
+        console.log(data);
+      },
+      error:(error)=>{
+        console.error(error)
+      },
+      complete:()=>{
+
+      }
+    }
+      
+    )
+  }
 }
