@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { IFilter } from '../models/filter.model';
 import { first, map } from 'rxjs';
-import { ICocktail } from '../models/cocktel.model';
+import { ICocktail } from '../models/cocktail.model';
 
 @Injectable({
   providedIn: 'root',
@@ -43,7 +43,8 @@ export class CocktailService {
   private parseDrinks(data: any) {
     if (!data) return [];
 
-    const drinks = ['drinks'] as any[];
+    const drinks = data['drinks'] as any[];
+
     return drinks.map(drink => {
       return {
         id: drink['idDrink'],
@@ -53,8 +54,8 @@ export class CocktailService {
       instructions:drink['strInstructionsES']||drink['strInstructions'],
       ingredients:this.parseArray(drink,'strIngredient'),
       measures:this.parseArray(drink,'strMeasure')
-    } as ICocktail
-    })
+    } as ICocktail;
+    });
   }
 
 

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IFilter } from '../../models/filter.model';
 import { CocktailService } from '../../services/cocktail-service';
-import { ICocktail } from '../../models/cocktel.model';
+import { ICocktail } from '../../models/cocktail.model';
 
 @Component({
   selector: 'app-list-cocktails',
@@ -20,7 +20,6 @@ export class ListCocktails {
   };
 
   filterData() {
-    console.log(this.filter);
     this.cocktailService.getCocktails(this.filter).subscribe({
       next: (cocktails: ICocktail[]) => {
         this.listCocktails = cocktails;

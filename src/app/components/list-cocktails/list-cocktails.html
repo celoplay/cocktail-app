@@ -44,15 +44,15 @@
         </div>
 
         <div class="row">
-            @for (cocktail of listCocktails; track cocktail.id) {
-            <div class="col-12 col-lg-3 col-md-4 col-sm-6 mt-3 mb-3">
+            @for(cocktail of listCocktails; track cocktail.id) {
+            <div class="col-12 col-lg-3 col-md-4 col-sm-6 mt-4 mb-4">
                 <div class="card">
                     <img [src]="cocktail.img" class="card-img-top" [alt]="cocktail.name">
                     <div class="card-body">
                         <p class="card-text">{{cocktail.name}}</p>
                     </div>
                     <div class="card-footer">
-                        <a class="btn primary">{{cocktail.ingredients}}</a>
+                        <a class="btn btn primary">Ver detalles</a>
                     </div>
                 </div>
             </div>
