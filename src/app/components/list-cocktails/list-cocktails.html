@@ -33,7 +33,7 @@
                             <input type="text" name="value" class="form-control" id="value" [(ngModel)]="filter.value">
                         </div>
                         <div class="col-4">
-                            <button class="btn btn-primary" type="submit">
+                            <button class="btn btn-primary " type="submit">
                                 <i class="bi bi-search"></i>
                                 Filtrar</button>
                         </div>
@@ -44,16 +44,32 @@
         </div>
 
         <div class="row">
+            @if (loadCocktails) {
             @for(cocktail of listCocktails; track cocktail.id) {
             <div class="col-12 col-lg-3 col-md-4 col-sm-6 mt-4 mb-4">
                 <div class="card">
                     <img [src]="cocktail.img" class="card-img-top" [alt]="cocktail.name">
                     <div class="card-body">
-                        <p class="card-text">{{cocktail.name}}</p>
+                        <p class="card-text text-center">{{cocktail.name}}</p>
                     </div>
-                    <div class="card-footer">
-                        <a class="btn btn primary">Ver detalles</a>
+                    <div class="card-footer d-grid">
+                        <a class="btn btn-primary" [routerLink]="['/detail-cocktail',cocktail.id]">Ver detalles</a>
                     </div>
+                </div>
+            </div>
+            }@empty {
+            <div class="col-12 text-center">
+                @if(searched){
+                <span>No se han encontrado resultados</span>
+                }@else {
+                <span>Introduce los parametros de busqueda</span>
+                }
+            </div>
+            }
+            }@else {
+            <div class="col-12 text-center p-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden ">Loading...</span>
                 </div>
             </div>
             }
