@@ -36,7 +36,7 @@ export class CocktailService {
     additionalURL += filter.value;
     return this.http.get(this.URL_BASE + additionalURL).pipe(
       first(),
-      map((data: any) => data)
+      map((data: any) => this.parseDrinks(data))
     );
   }
 
@@ -44,9 +44,7 @@ export class CocktailService {
     if (!data) return [];
 
     const drinks = ['drinks'] as any[];
-    
-
-    return drinks.map((drink) => {
+    return drinks.map(drink => {
       return {
         id: drink['idDrink'],
         name: drink['strDrink'],
@@ -55,8 +53,8 @@ export class CocktailService {
       instructions:drink['strInstructionsES']||drink['strInstructions'],
       ingredients:this.parseArray(drink,'strIngredient'),
       measures:this.parseArray(drink,'strMeasure')
-    } as ICocktail;
-    });
+    } as ICocktail
+    })
   }
 
 

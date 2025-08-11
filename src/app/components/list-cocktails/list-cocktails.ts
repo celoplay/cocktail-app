@@ -12,7 +12,7 @@ import { ICocktail } from '../../models/cocktel.model';
 })
 export class ListCocktails {
   private cocktailService = inject(CocktailService);
-  public listCocktails: ICocktail[]=[];
+  public listCocktails: ICocktail[] = [];
 
   public filter: IFilter = {
     searchBy: 'name',
@@ -20,20 +20,16 @@ export class ListCocktails {
   };
 
   filterData() {
+    console.log(this.filter);
     this.cocktailService.getCocktails(this.filter).subscribe({
-
-      next: (cocktails: ICocktail[])=> {
-        //console.log(ListCocktails)
+      next: (cocktails: ICocktail[]) => {
         this.listCocktails = cocktails;
+        console.log(cocktails);
       },
-      error:(error)=>{
-        console.error(error)
+      error: (error) => {
+        console.error(error);
       },
-      complete:()=>{
-
-      }
-    }
-      
-    )
+      complete: () => {},
+    });
   }
 }
