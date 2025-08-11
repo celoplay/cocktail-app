@@ -45,7 +45,7 @@
 
         <div class="row">
             @if (loadCocktails) {
-            @for(cocktail of listCocktails; track cocktail.id) {
+            @for(cocktail of listCocktails | paginate:{itemsPerPage, currentPage}; track cocktail.id) {
             <div class="col-12 col-lg-3 col-md-4 col-sm-6 mt-4 mb-4">
                 <div class="card">
                     <img [src]="cocktail.img" class="card-img-top" [alt]="cocktail.name">
@@ -74,5 +74,17 @@
             </div>
             }
         </div>
+
+        @if (listCocktails.length > itemsPerPage) {
+                    <div class="row">
+            <div class="col-12 text-center">
+                <pagination-controls
+                previousLabel="Anterior"
+                nextLabel="Siguiente"
+                (pageChange)="pageChange($event)"
+                />
+            </div>
+        </div>
+        }
     </div>
 </div>

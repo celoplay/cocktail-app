@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, numberAttribute } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IFilter } from '../../models/filter.model';
 import { CocktailService } from '../../services/cocktail-service';
@@ -8,7 +8,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-list-cocktails',
-  imports: [FormsModule,RouterLink, NgxPaginationModule],
+  imports: [FormsModule, RouterLink, NgxPaginationModule],
   templateUrl: './list-cocktails.html',
   styleUrl: './list-cocktails.scss',
 })
@@ -18,6 +18,7 @@ export class ListCocktails {
   public searched: boolean = false;
   public loadCocktails: boolean = true;
 
+  //valores de paginacion
   public currentPage = 1;
   public itemsPerPage = 12;
 
@@ -29,6 +30,7 @@ export class ListCocktails {
   filterData() {
     this.searched = true;
     this.loadCocktails = false;
+    
     this.cocktailService.getCocktails(this.filter).subscribe({
       next: (cocktails: ICocktail[]) => {
         this.listCocktails = cocktails;
@@ -38,10 +40,13 @@ export class ListCocktails {
         console.error(error);
       },
       complete: () => {
-            //this.searched = false;
-            this.loadCocktails = true;
-
+        //this.searched = false;
+        this.loadCocktails = true;
       },
     });
+  }
+  //metodo paginacion
+  pageChange(page: number) {
+    this.currentPage = page;
   }
 }
