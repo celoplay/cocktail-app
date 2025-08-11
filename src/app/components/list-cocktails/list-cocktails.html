@@ -6,29 +6,28 @@
                     <div class="row">
                         <div class="col-4">
                             <label for="search" class="form-label">Buscar por </label>
-                            <select name="search" id="search" class="form-control"
-                                [(ngModel)]="filter.searchBy">
-                            <option value="name">Nombre</option>
-                            <option value="glass">Vaso</option>
-                            <option value="ingredient">Ingrediente</option>
-                            <option value="category">Categoria</option>
+                            <select name="search" id="search" class="form-control" [(ngModel)]="filter.searchBy">
+                                <option value="name">Nombre</option>
+                                <option value="glass">Vaso</option>
+                                <option value="ingredient">Ingrediente</option>
+                                <option value="category">Categoria</option>
                             </select>
                         </div>
                         <div class="col-4">
                             <label for="value" class="form-label">
                                 @switch (filter.searchBy) {
-                                    @case ('name') {
-                                        Nombre
-                                    }
-                                    @case ('glass') {
-                                        Vaso
-                                    }
-                                    @case ('ingredient') {
-                                        Ingrediente
-                                    }
-                                    @case ('category') {
-                                        Categoria
-                                    }
+                                @case ('name') {
+                                Nombre
+                                }
+                                @case ('glass') {
+                                Vaso
+                                }
+                                @case ('ingredient') {
+                                Ingrediente
+                                }
+                                @case ('category') {
+                                Categoria
+                                }
                                 }
                             </label>
                             <input type="text" name="value" class="form-control" id="value" [(ngModel)]="filter.value">
@@ -42,6 +41,22 @@
 
                 </form>
             </div>
+        </div>
+
+        <div class="row">
+            @for (cocktail of listCocktails; track cocktail.id) {
+            <div class="col-12 col-lg-3 col-md-4 col-sm-6 mt-3 mb-3">
+                <div class="card">
+                    <img [src]="cocktail.img" class="card-img-top" [alt]="cocktail.name">
+                    <div class="card-body">
+                        <p class="card-text">{{cocktail.name}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn primary">{{cocktail.ingredients}}</a>
+                    </div>
+                </div>
+            </div>
+            }
         </div>
     </div>
 </div>

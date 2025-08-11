@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IFilter } from '../../models/filter.model';
 import { CocktailService } from '../../services/cocktail-service';
+import { ICocktail } from '../../models/cocktel.model';
 
 @Component({
   selector: 'app-list-cocktails',
@@ -11,6 +12,7 @@ import { CocktailService } from '../../services/cocktail-service';
 })
 export class ListCocktails {
   private cocktailService = inject(CocktailService);
+  public listCocktails: ICocktail[]=[];
 
   public filter: IFilter = {
     searchBy: 'name',
@@ -20,8 +22,9 @@ export class ListCocktails {
   filterData() {
     this.cocktailService.getCocktails(this.filter).subscribe({
 
-      next: (data: any)=> {
-        console.log(data);
+      next: (cocktails: ICocktail[])=> {
+        //console.log(ListCocktails)
+        this.listCocktails = cocktails;
       },
       error:(error)=>{
         console.error(error)
