@@ -1,1 +1,68 @@
-<p>detail-cocktail works!</p>
+<div class="row mt-4 mb-4">
+    @if (loadCocktail) {
+    @if (cocktail) {
+    <div class="col-12">
+
+        <div class="row">
+            <div class="col-12">
+                <span class="h1">
+                    {{cocktail.name}}
+                </span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="offset-md-3 col-md-3 col-12 ">
+                <img [src]="cocktail.img" class="img-fluid rounded" [alt]="cocktail.name">
+                    <button class="btn btn-primary mt-4 mb-4 p-2" routerLink="list-cocktails">
+            <i class="bi bi-arrow-left me-1"></i>Volver</button>
+            </div>
+            <div class="col-md-4 col-12">
+                @if (cocktail.instructions) {
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="h3">Instrucciones</span>
+                            <span class="d-block">{{cocktail.instructions}}</span>
+                        </div>
+                    </div>
+                }
+                @if (cocktail.ingredients.length) {
+                                        <div class="row">
+                        <div class="col-12">
+                            <span class="h3">Ingredientes</span>
+                            <ul class="list-unstyled">
+                                @for (ingredient of cocktail.ingredients; 
+                                track ingredient; let index= $index) {
+                                <li>{{ingredient}}
+                                    <!-- concatenamos las medidas con su respectivo ingredient -->
+                                @if(cocktail.measures[index]){
+                                        {{cocktail.measures[index]}}
+                                    }
+                                </li>
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    }@else {
+    <div class="col-12 text-center">
+        <span class="d-block mb-4">No existe el cocktail.</span>
+        <button class="btn btn-primary" routerLink="list-cocktails">
+            <i class="bi bi-arrow-left me-1"></i>
+        </button>
+    </div>
+    }
+    }@else {
+    <div class="col-12 text-center p-5">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden ">Loading...</span>
+        </div>
+    </div>
+
+    }
+</div>

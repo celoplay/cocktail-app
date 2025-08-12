@@ -38,6 +38,8 @@ export class ListCocktails {
       },
       error: (error) => {
         console.error(error);
+        this.loadCocktails = true;
+
       },
       complete: () => {
         //this.searched = false;
