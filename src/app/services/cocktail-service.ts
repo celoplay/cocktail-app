@@ -44,6 +44,7 @@ export class CocktailService {
     if (!data) return [];
 
     const drinks = data['drinks'] as any[];
+    if(!drinks)return [];
 
     return drinks.map(drink => {
       return {
@@ -58,5 +59,16 @@ export class CocktailService {
     });
   }
 
+  //Servicio para un cocktel
 
+  getCocktailById(id:string){
+    const additionaUrl = 'lookup.php?i=';
+    return this.http.get(this.URL_BASE + additionaUrl+id).pipe(
+      first(),
+      map((data:any) => {
+        const listCocktails = this.parseDrinks(data)
+        return listCocktails[0];
+      })
+    );
+  }
 }
