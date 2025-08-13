@@ -1,59 +1,73 @@
-# CocktailApp
+# 🍹 Cocktail App (Angular • Aprendizaje)
+[![Angular](https://img.shields.io/badge/Angular-Framework-informational)]()
+[![TypeScript](https://img.shields.io/badge/TypeScript-Language-informational)]()
+[![Status](https://img.shields.io/badge/Status-Active-brightgreen)]()
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.6.
+Aplicación de ejemplo para **buscar y explorar cócteles** consumiendo una API pública.  
+> Proyecto **didáctico** basado en material de curso, con **adaptaciones personales** para reforzar el aprendizaje.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Funcionalidades
+- Búsqueda de cócteles por **nombre** y/o **ingrediente**
+- Listado con **imagen**, **nombre** y **categoría**
+- Vista de **detalle**: ingredientes, medidas y preparación
+- **Favoritos** (opcional) con `localStorage`
+- **Filtros** por categoría / con alcohol (opcional)
 
-```bash
-ng serve
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🧰 Tecnologías
+- Angular, TypeScript  
+- HTML, CSS  
+- HttpClient (peticiones a API)  
+- Git
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📦 Requisitos
+- Node 18+ (recomendado)  
+- Angular CLI instalado globalmente:
+  ```bash
+  npm i -g @angular/cli
 
-```bash
-ng generate component component-name
-```
+## ▶️ Ejecución local
+git clone https://github.com/celoplay/cocktail-app<br>
+cd cocktail-app<br>
+npm install<br>
+ng serve<br>
+abre http://localhost:4200
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-```bash
-ng generate --help
-```
+## 🔌 API utilizada
 
-## Building
+TheCocktailDB: https://www.thecocktaildb.com <br>
+Endpoints típicos:
 
-To build the project run:
+- Buscar por nombre: /api/json/v1/1/search.php?s=<nombre>
+- Por ingrediente: /api/json/v1/1/filter.php?i=<ingrediente>
+- Detalle por ID: /api/json/v1/1/lookup.php?i=<id>
 
-```bash
-ng build
-```
+## 🧠 Qué aprendí
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- Consumo de API con HttpClient y Observables<br>
+- Routing y parámetros (/detail/:id)
+- Comunicación entre componentes y estado local
+- Manejo de errores y estados de carga
+- Organización de un proyecto Angular
 
-## Running unit tests
+## ✨ Cambios personales (ejemplos)
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Estilos propios, pipes de formato, favoritos en localStorage, loaders, etc.
 
-```bash
-ng test
-```
+## 📝 Nota
+Proyecto desarrollado como parte de mi formación en "Aprende Angular desde 0 con 10 proyectos completos" por Disco Duro de Roer  <br>
+Curso disponible en: https://www.udemy.com/course/aprende-angular-desde-0-con-10-proyectos-completos/
 
-## Running end-to-end tests
 
-For end-to-end (e2e) testing, run:
 
-```bash
-ng e2e
-```
+## 👤 Autor
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Marcelo Aizaga M.** — Valencia, España  
+GitHub: https://github.com/celoplay  
+LinkedIn: https://www.linkedin.com/in/marcelo-aizaga
